@@ -1,0 +1,31 @@
+# Python-related files
+__pycache__/
+env/
+test.db
+
+# IDE-specific files
+.idea/
+.ipynb_checkpoints/
+.mypy_cache/
+.vscode/
+
+# Test coverage reports
+htmlcov/
+.coverage
+coverage.xml
+
+# Build artifacts
+dist/
+site/
+docs_build/
+site_build/
+venv/
+docs.zip
+archive.zip
+
+# Vim temporary files
+*~
+.*.sw?
+
+# macOS-specific files
+.DS_Store
