@@ -26,6 +26,7 @@ archive.zip
 # Vim temporary files
 *~
 .*.sw?
+envr.py
 
 # macOS-specific files
 .DS_Store

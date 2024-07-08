@@ -41,3 +41,30 @@ async def read_user(user_id:int, db: db_dependency):
     if user is None:
         raise HTTPException(status_code=404, detail='user not found')
     return user
+
+# create post
+
+@app.post('/post/',status_code= status.HTTP_201_CREATED)
+async def create_post(post: PostBase, db: db_dependency):
+    db_post = models.Post(**post.model_dump())
+    db.add(db_post)
+    db.commit()
+
+#get specific post
+
+@app.get('/post/{user_post}', status_code= status.HTTP_200_OK)
+async def read_post(user_post: int, db: db_dependency ):
+    post = db.query(models.Post).filter(models.Post.id == user_post).first()
+    if post is None:
+        raise HTTPException(status_code=404, detail= 'post not found')
+    return post
+
+# delete post
+
+@app.delete('/post/{post_id}', status_code=status.HTTP_200_OK)
+async def post_delete(post_id: int, db: db_dependency):
+    post = db.query(models.Post).filter(models.Post.id == post_id).first()
+    if post is None:
+        raise HTTPException(status_code=404, detail=' post not found')
+    db.delete(post)
+    db.commit()
